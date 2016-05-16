@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using xUnitExtension;
 
 namespace SomeApplication.Tests
 {
@@ -43,6 +44,17 @@ namespace SomeApplication.Tests
             var empManager = new EmployeeManager();
 
             var myException = Assert.Throws<NullReferenceException>(() => empManager.RemoveEmployee(null));
+        }
+
+        [Theory]
+        [FileDataAttribute("TestData.txt")]
+        public void TestFileDataAttribute(int expectedAge, string expectedName)
+        {
+            var empManager = GetEmployeeManagerForTests();
+            
+            var emp = new Employee { Age = expectedAge, Name = expectedName };
+
+            Assert.Equal(empManager.Employees[0], emp);
         }
     }
 }

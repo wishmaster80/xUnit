@@ -1,0 +1,2 @@
+﻿int:22|string:Onizuka
+int:22|string:Onizuka
